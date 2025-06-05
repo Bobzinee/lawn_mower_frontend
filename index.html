@@ -109,14 +109,14 @@ body {
 			<div id="status-notice"></div>
 		</div>
 		<script>
-		// Ping script
+			// Ping script
 			const KEEP_ALIVE_URL = "https://lawn-mower-backend.onrender.com/ping";
 			fetch(KEEP_ALIVE_URL).catch(console.error);
 			setInterval(() => {
 				fetch(KEEP_ALIVE_URL)
 					.then(response => console.log("Keep-alive ping:", response.status))
 					.catch(error => console.error("Ping failed:", error));
-			}, 10 * 60 * 1000); // Ping every 10 minutes
+			}, 10 * 60 * 1000);
 		</script>
 		<script src="index.js"></script>
 		<script>
