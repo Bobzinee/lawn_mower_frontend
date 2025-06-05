@@ -108,24 +108,19 @@ body {
 			<progress id="status-progress"></progress>
 			<div id="status-notice"></div>
 		</div>
-
-		<script src="index.js"></script>
 		<script>
-			// Keep Render backend awake every 10 minutes
-			const BACKEND_URL = "https://lawn-mower-backend.onrender.com/ping";
-
-			// Immediately ping once on page load
-			fetch(BACKEND_URL).catch(console.error);
-
-			// Ping every 10 minutes
+		// Ping script
+			const KEEP_ALIVE_URL = "https://lawn-mower-backend.onrender.com/ping";
+			fetch(KEEP_ALIVE_URL).catch(console.error);
 			setInterval(() => {
-				fetch(BACKEND_URL)
+				fetch(KEEP_ALIVE_URL)
 					.then(response => console.log("Keep-alive ping:", response.status))
 					.catch(error => console.error("Ping failed:", error));
-			}, 10 * 60 * 1000); // 10 minutes
+			}, 10 * 60 * 1000); // Ping every 10 minutes
 		</script>
+		<script src="index.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":8773232,"index.wasm":43699190},"focusCanvas":true,"gdextensionLibs":[]};
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":8786240,"index.wasm":43699190},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
 const engine = new Engine(GODOT_CONFIG);
 
