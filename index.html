@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
-		<title>Project Lyra</title>
+		<title>Lawn Mower Interface</title>
 		<style>
 html, body, #canvas {
 	margin: 0;
@@ -110,6 +110,20 @@ body {
 		</div>
 
 		<script src="index.js"></script>
+		<script>
+			// Keep Render backend awake every 10 minutes
+			const BACKEND_URL = "https://lawn-mower-backend.onrender.com/ping";
+
+			// Immediately ping once on page load
+			fetch(BACKEND_URL).catch(console.error);
+
+			// Ping every 10 minutes
+			setInterval(() => {
+				fetch(BACKEND_URL)
+					.then(response => console.log("Keep-alive ping:", response.status))
+					.catch(error => console.error("Ping failed:", error));
+			}, 10 * 60 * 1000); // 10 minutes
+		</script>
 		<script>
 const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":8773232,"index.wasm":43699190},"focusCanvas":true,"gdextensionLibs":[]};
 const GODOT_THREADS_ENABLED = false;
